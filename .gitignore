@@ -46,3 +46,24 @@ tools/bin2c.exe
 Debug-Dynlink
 ipch
 Release-Dynlink
+
+# Autotools outputs
+/Makefile
+/include/Makefile
+/syringe/Makefile
+/utilities/Makefile
+Makefile.in
+/aclocal.m4
+/autom4te.cache/
+/build-aux/
+/compile
+/config.h.in
+/config.h
+/config.log
+/config.status
+/configure
+/depcomp
+/install-sh
+/missing
+/stamp-h1
+/libtool
