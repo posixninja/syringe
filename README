@@ -22,3 +22,35 @@ What is syringe?
 	Syringe is the "Injector" module from GreenPois0n. It's used for sending exploits to the device 
 	and booting the device out of recovery mode, and into a jailbroken state, whether to a ramdisk 
 	or to the main filesystem.
+
+Building with Autotools
+-----------------------
+
+Syringe now uses a standard Autoconf/Automake toolchain.  A typical
+build looks like:
+
+```
+$ ./autogen.sh          # generates configure & friends
+$ ./configure           # add --prefix, --host, etc. if needed
+$ make
+$ sudo make install
+```
+
+Required dependencies:
+
+- pkg-config
+- libusb-1.0 (headers + shared library)
+- libcurl
+- zlib
+- `xxd` (bundled with Vim, used to turn payload blobs into headers)
+- An ARM toolchain capable of assembling the exploit payloads.  By
+  default we expect `arm-elf-as` and `arm-elf-objcopy`, but you can
+  override them on the configure command line, e.g.:
+
+```
+$ ARM_AS=arm-none-eabi-as ARM_OBJCOPY=arm-none-eabi-objcopy ./configure
+```
+
+To speed up iterative hacking, you can also skip `autogen.sh` after the
+first run and just re-run `configure` whenever you change
+`config.status` inputs.
